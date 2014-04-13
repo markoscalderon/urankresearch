@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2014//EN" "http://www.ncbi.nlm.nih.gov/corehtml/query/DTD/pubmed_140101.dtd">
+<PubmedArticleSet>
+<PubmedArticle>
+    <MedlineCitation Owner="NLM" Status="MEDLINE">
+        <PMID Version="1">24347402</PMID>
+        <DateCreated>
+            <Year>2014</Year>
+            <Month>02</Month>
+            <Day>07</Day>
+        </DateCreated>
+        <DateCompleted>
+            <Year>2014</Year>
+            <Month>04</Month>
+            <Day>08</Day>
+        </DateCompleted>
+        <Article PubModel="Print-Electronic">
+            <Journal>
+                <ISSN IssnType="Electronic">1545-5017</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <Volume>61</Volume>
+                    <Issue>4</Issue>
+                    <PubDate>
+                        <Year>2014</Year>
+                        <Month>Apr</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Pediatric blood &amp; cancer</Title>
+                <ISOAbbreviation>Pediatr Blood Cancer</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Identification of risk factors for an unsuccessful transition from pediatric to adult sickle cell disease care.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>697-701</MedlinePgn>
+            </Pagination>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1002/pbc.24870</ELocationID>
+            <Abstract>
+                <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">A successful transition from pediatric to adult sickle cell disease (SCD) care is paramount to continued improvements in survival. In order to enhance transition success, our pediatric SCD transition process was modified to include combined adult and pediatric provider clinics that incorporated participation by our local SCD community-based organization. All children ages 16 and over participated in this newly-formed transition program.</AbstractText>
+                <AbstractText Label="PROCEDURE" NlmCategory="METHODS">After 5 years of implementation of the modified SCD transition program, we retrospectively studied clinical and non-clinical risk factors for an unsuccessful transition. Risk factor categories studied included patient demographics, transition clinic attendance, and disease severity.</AbstractText>
+                <AbstractText Label="RESULTS" NlmCategory="RESULTS">Thirty-two percent of patients did not transition successfully. Demographic factors such as gender, race, and type of insurance did not influence transition outcome, although travel distance to the adult SCD center was an identifiable risk factor for an unsuccessful transition. While transition clinic attendance rate did not affect transition outcomes, older age at first modified combined transition clinic visit was a significant risk factor for lack of transition. Patients with clinical markers of milder disease severity (SC and Sβ(+) genotypes and no chronic transfusion therapy) were at higher risk for an unsuccessful transition than patients with severe disease.</AbstractText>
+                <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">We have identified several risk factors for lack of transition success which will allow us to modify our transition efforts going forward to capture this highest risk subset.</AbstractText>
+                <CopyrightInformation>© 2013 Wiley Periodicals, Inc.</CopyrightInformation>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Andemariam</LastName>
+                    <ForeName>Biree</ForeName>
+                    <Initials>B</Initials>
+                    <Affiliation>Adult Sickle Cell Center, Division of Hematology-Oncology, University of Connecticut Health Center, Farmington, Connecticut.</Affiliation>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Owarish-Gross</LastName>
+                    <ForeName>Jasmine</ForeName>
+                    <Initials>J</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Grady</LastName>
+                    <ForeName>James</ForeName>
+                    <Initials>J</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Boruchov</LastName>
+                    <ForeName>Donna</ForeName>
+                    <Initials>D</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Thrall</LastName>
+                    <ForeName>Roger S</ForeName>
+                    <Initials>RS</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Hagstrom</LastName>
+                    <ForeName>J Nathan</ForeName>
+                    <Initials>JN</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType>Journal Article</PublicationType>
+                <PublicationType>Research Support, Non-U.S. Gov't</PublicationType>
+            </PublicationTypeList>
+            <ArticleDate DateType="Electronic">
+                <Year>2013</Year>
+                <Month>12</Month>
+                <Day>18</Day>
+            </ArticleDate>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>United States</Country>
+            <MedlineTA>Pediatr Blood Cancer</MedlineTA>
+            <NlmUniqueID>101186624</NlmUniqueID>
+            <ISSNLinking>1545-5009</ISSNLinking>
+        </MedlineJournalInfo>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Adolescent</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Adult</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Anemia, Sickle Cell</DescriptorName>
+                <QualifierName MajorTopicYN="N">complications</QualifierName>
+                <QualifierName MajorTopicYN="Y">therapy</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Female</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Follow-Up Studies</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Male</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Pediatrics</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Prognosis</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Retrospective Studies</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Risk Factors</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Severity of Illness Index</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Stroke</DescriptorName>
+                <QualifierName MajorTopicYN="Y">etiology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Survival Rate</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Transition to Adult Care</DescriptorName>
+                <QualifierName MajorTopicYN="Y">statistics &amp; numerical data</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Young Adult</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+        <KeywordList Owner="NOTNLM">
+            <Keyword MajorTopicYN="N">sickle cell disease</Keyword>
+            <Keyword MajorTopicYN="N">transition</Keyword>
+        </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="received">
+                <Year>2013</Year>
+                <Month>6</Month>
+                <Day>7</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="accepted">
+                <Year>2013</Year>
+                <Month>10</Month>
+                <Day>31</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="aheadofprint">
+                <Year>2013</Year>
+                <Month>12</Month>
+                <Day>18</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2013</Year>
+                <Month>12</Month>
+                <Day>19</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2013</Year>
+                <Month>12</Month>
+                <Day>19</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2014</Year>
+                <Month>4</Month>
+                <Day>9</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">24347402</ArticleId>
+            <ArticleId IdType="doi">10.1002/pbc.24870</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+
+</PubmedArticleSet>
