@@ -4,3 +4,4 @@ papers.json
 universities/universities.html
 universities/universities.csv
 universities/unis/*.html
+webapp/node_modules

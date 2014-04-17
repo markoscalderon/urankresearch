@@ -1,3 +1,12 @@
+Prerequisites
+-------------
+
 1) Install Biopython
 2) Copy DTD files to biopython location
+3) Install frilz
+4) Install Karma
+
+DataWare House
+--------------
+1) Collect Mesh Terms
 3) run the scripts 
