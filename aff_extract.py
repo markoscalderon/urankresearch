@@ -23,8 +23,7 @@ for i in range(0,len(j)):
 			else :
 				sobj=re.search(r'[\w.-]+@[\w.-]+', s)
 				if  sobj:
-					print s[:sobj.start()]
-			
+					print s[:sobj.start()]+"Author name "+ j[i]['paper_authors'][k]['name']
 
 #print j['paper_authors']['affiliations']
 #or s.find("insti") or s.find("Univ")
