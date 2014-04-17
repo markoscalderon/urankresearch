@@ -1,4 +1,6 @@
 .DS_Store
-papers.txt
 mesh.csv
-
+papers.json
+universities/universities.html
+universities/universities.csv
+universities/unis/*.html

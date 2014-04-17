@@ -41,9 +41,9 @@ for paperID in record['IdList']:
 			paper_author = {}
 			if pauthor.has_key('LastName'):
 				if pauthor.has_key('ForeName'):
-					paper_author['name'] = pauthor['LastName'], " ", pauthor['ForeName']
+					paper_author['name'] = pauthor['LastName'] + " " + pauthor['ForeName']
 				elif pauthor.has_key('Initials'):
-					paper_author['name'] = pauthor['LastName'], " ", pauthor['Initials']
+					paper_author['name'] = pauthor['LastName'] + " " + pauthor['Initials']
 				else:
 					paper_author['name'] = pauthor['LastName']
 			if pauthor.has_key('Affiliation'):
@@ -59,5 +59,5 @@ for paperID in record['IdList']:
 
 
 
-with open('papers.txt', 'wt') as out:
-	out.write(str(papers))
+with open('papers.json', 'wt') as out:
+	out.write(json.dumps(papers))
