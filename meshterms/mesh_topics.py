@@ -42,7 +42,7 @@ for toplevelid in occ_record[0]['DS_IdxLinks'][0]['Children']:
 
 print data
 
-ofile = open("mesh.csv","wb")
+ofile = open("mesh_terms.csv","wb")
 writer = csv.writer(ofile,delimiter='$',quotechar='"',quoting=csv.QUOTE_ALL)
 
 for row in data:

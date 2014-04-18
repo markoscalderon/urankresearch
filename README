@@ -1,3 +1,57 @@
+Prerequisites
+-------------
+
 1) Install Biopython
 2) Copy DTD files to biopython location
-3) run the scripts 
+3) Install frilz
+4) Install Karma
+
+Data Warehouse
+--------------
+1) Collect Mesh Terms
+
+Go to the meshterms folder and run the script:
+python mesh_terms.py
+
+This will create a mesh_terms.csv file
+
+2) Collect University names
+
+Go to universities folder, let's collect first from shanghairanking, go to shanghairanking and run:
+
+python universities.py
+
+This will first download the main page from shanghairanking and later it will download the pages from each university. It downloads the pages for a better processing, so if later it's needed to re run the query, we don't query again against the server for all the pages.
+
+The final results will be stored in universities.csv
+
+Now, let's collect US universities:
+
+
+
+3)Collect papers from PubMed
+
+Copy the mesh_terms.csv file to the papers folder. Then, inside papers folder, run:
+
+python papers_by_level.py
+
+This will create papers.json file that contains all the data for the mesh terms. Also, a sample_pubmed_paper.xml is provided in order to know what are the properties.
+
+4) Affiliation extraction
+
+This step will extract the affiliation from the papers and it will provide the data in a clean format in order to perform a matching with the universities data. For run this:
+
+
+
+5) Record Linkage
+
+TODO
+
+6) Triplestore creation
+
+TODO
+
+7) Webapp
+
+TODO
+

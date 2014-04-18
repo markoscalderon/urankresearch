@@ -1,6 +1,7 @@
 .DS_Store
-mesh.csv
-papers.json
-universities/universities.html
-universities/universities.csv
-universities/unis/*.html
+meshterms/mesh.csv
+papers/papers.json
+universities/shanghairanking/universities.html
+universities/shanghairanking/universities.csv
+universities/shanghairanking/unis/*.html
+webapp/node_modules
