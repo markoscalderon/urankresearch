@@ -49,7 +49,15 @@ for i in range(0,len(j)):
 		
 		
 		if temp_work_string.find("USA")!=-1 or temp_work_string.find("USA.")!=-1 :
-			temp_work_string.replace("USA","United States of America")
+			temp_work_string=temp_work_string.replace("USA","United States")
+			
+		if temp_work_string.find("UK")!=-1 or temp_work_string.find("UK.")!=-1 :			
+			temp_work_string=temp_work_string.replace("UK","United Kingdom")
+			
+		sobj=re.search(r'[\w.-]+@[\w.-]+', temp_work_string)
+		if sobj:
+			temp=temp_work_string
+			temp_work_string=temp_work_string[:sobj.start()]+temp_work_string[sobj.end():]
 		temp_string=temp_string+temp_work_string
 	if len(temp_string)!=0 :
 		if temp_string!=prev_str and len(temp_string)>8:
