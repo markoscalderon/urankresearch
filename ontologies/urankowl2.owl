@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.urank.com/ontologies/urankowl.owl#"
+     xml:base="http://www.urank.com/ontologies/urankowl.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.urank.com/ontologies/urankowl.owl">
+        <rdfs:comment>second attempt at ontology making for out CSCI 548 project.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasMeshID -->
+
+    <owl:ObjectProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasMeshID">
+        <rdfs:range rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Mesh_Term"/>
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasSubMeshTerms -->
+
+    <owl:ObjectProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasSubMeshTerms">
+        <rdfs:range rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Mesh_Term"/>
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Mesh_Term"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasUniversityAffiliation -->
+
+    <owl:ObjectProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasUniversityAffiliation">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="http://www.urank.com/ontologies/urankowl.owl#University"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasAbstract -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasAbstract">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasAuthor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasAuthor">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasCountry -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasCountry">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#University"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasID">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Mesh_Term"/>
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;unsignedLong"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasName">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Mesh_Term"/>
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#University"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasNativeName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasNativeName">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#University"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasPublishedDay -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasPublishedDay">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasPublishedMonth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasPublishedMonth">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasPublishedYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasPublishedYear">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasTitle">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#universityURL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#universityURL">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#University"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#Mesh_Term -->
+
+    <owl:Class rdf:about="http://www.urank.com/ontologies/urankowl.owl#Mesh_Term"/>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#Papers -->
+
+    <owl:Class rdf:about="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+    
+
+
+    <!-- http://www.urank.com/ontologies/urankowl.owl#University -->
+
+    <owl:Class rdf:about="http://www.urank.com/ontologies/urankowl.owl#University"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
