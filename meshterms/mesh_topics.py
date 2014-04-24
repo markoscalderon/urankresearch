@@ -5,8 +5,7 @@ Entrez.email = "marcocal@usc.edu"
 
 #Data array, this will have the toplevels and the second levels
 data = []
-data.append(["rownum","toplevelid","toplevel_name","secondlevelid","secondlevel_name"])
-rownum = 0
+data.append(["meshid","mesh_name","secondlevelid","secondlevel_name"])
 
 print data
 
@@ -33,17 +32,16 @@ for toplevelid in occ_record[0]['DS_IdxLinks'][0]['Children']:
 			secondlevel_record = Entrez.read(secondlevel_handle)
 			secondlevel_name = secondlevel_record[0]['DS_MeshTerms'][0]
 			print toplevelid," ",toplevel_name," ",secondlevel_name
-			rownum+=1
-			data.append([rownum,toplevelid,toplevel_name,secondlevelid,secondlevel_name])	
+			data.append([secondlevelid,secondlevel_name,'',''])
+			data.append([toplevelid,toplevel_name,secondlevelid,secondlevel_name])	
 	else:
 		print toplevelid," ",toplevel_name
-		rownum+=1
-		data.append([rownum,toplevelid,toplevel_name,'',''])
+		data.append([toplevelid,toplevel_name,'',''])
 
 print data
 
 ofile = open("mesh_terms.csv","wb")
-writer = csv.writer(ofile,delimiter='$',quotechar='"',quoting=csv.QUOTE_ALL)
+writer = csv.writer(ofile,delimiter='|',quotechar='"',quoting=csv.QUOTE_ALL)
 
 for row in data:
 	writer.writerow(row)

@@ -1,7 +1,7 @@
 import json
 import re
 from pprint import pprint
-obj=open('papers.txt','r') #load the paper.txt file which contains the downloaded papers info
+obj=open('papers.json','r') #load the paper.txt file which contains the downloaded papers info
 #j=json.loads('{"one" : "1", "two" : "2", "three" : "3"}')
 j=json.loads(obj.read())
 counter=0

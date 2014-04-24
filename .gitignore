@@ -4,4 +4,11 @@ papers/papers.json
 universities/shanghairanking/universities.html
 universities/shanghairanking/universities.csv
 universities/shanghairanking/unis/*.html
+universities/us_univ/univ_names_US.csv
+universities/us_univ/exuvnames.class
 webapp/node_modules
+affiliation_extraction/papers.json
+meshterms/mesh_terms.csv
+papers/results.csv
+papers/papers_by_meshterm.csv
+papers/final_papers.json

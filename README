@@ -3,7 +3,7 @@ Prerequisites
 
 1) Install Biopython
 2) Copy DTD files to biopython location
-3) Install frilz
+3) Install fril: http://fril.sourceforge.net/
 4) Install Karma
 
 Data Warehouse
@@ -25,9 +25,13 @@ This will first download the main page from shanghairanking and later it will do
 
 The final results will be stored in universities.csv
 
-Now, let's collect US universities:
+Now, let's collect US universities, go to universities/us_univ and compile:
 
+javac -cp jsoup-1.7.3.jar:. exuvnames.java
 
+Then run:
+
+java -cp jsoup-1.7.3.jar:. exuvnames
 
 3)Collect papers from PubMed
 

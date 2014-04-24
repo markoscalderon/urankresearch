@@ -1,0 +1,45 @@
+//get all toplevel meshids
+PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#>
+select distinct ?meshid ?meshname
+where{
+  ?x urank:hasID ?meshid.
+  ?x urank:hasName ?meshname.
+  MINUS{
+    ?y urank:hasSubMeshTerms ?x
+  }
+}
+order by ?meshname
+
+// get secondlevels by toplevel ID
+PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#>
+select distinct ?meshid ?meshname
+where{
+  ?x urank:hasID "68016390".
+  ?x urank:hasSubMeshTerms ?y.
+  ?y urank:hasID ?meshid.
+  ?y urank:hasName ?meshname
+}
+order by ?meshname
+
+PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#>
+select ?name (COUNT(?uni) AS ?count) 
+where{
+  ?x urank:hasID ?ids .
+  ?paper urank:hasMeshID ?x .
+  ?paper urank:hasUniversityAffiliation ?uni.
+  ?uni urank:hasName ?name
+  FILTER(?ids IN ("68001698","68013677"))
+}
+group by ?name
+
+PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#>
+select ?papername 
+where{
+  ?x urank:hasID ?ids .
+  ?paper urank:hasMeshID ?x .
+  ?paper urank:hasTitle ?papername.
+  ?paper urank:hasUniversityAffiliation ?uni.
+  ?uni urank:hasName "Polytechnic Institute of Milan"
+  FILTER(?ids IN ("68001698","68013677"))
+}
+

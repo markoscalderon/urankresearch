@@ -65,14 +65,22 @@ for univ in univ_names:
 		cont+=1
 		if cont == 2:
 			native_name = unicode(td.string).encode('utf-8')
+			native_name = native_name.replace("The University","University")
 		elif cont == 4:
 			en_name = unicode(td.string).encode('utf-8')
+			en_name = en_name.replace("The University","University")
 		elif cont == 8:
 			country = unicode(td.string).encode('utf-8')
 		elif cont == 12:
 			address = unicode(td.string).encode('utf-8')
 		elif cont == 14:
 			url = unicode(td.a.string).encode('utf-8')
+			if url[-1] == "/":
+				url = url[:-1]
+	if native_name == "None":
+		native_name = en_name
+	if en_name == "None":
+		en_name = native_name
 	listUniversities.append([native_name,en_name,country,address,url])
 
 print len(listUniversities)
