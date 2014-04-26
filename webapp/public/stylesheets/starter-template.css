@@ -1,0 +1,28 @@
+body {
+    padding-top: 50px;
+    background-color: #EEEEEE;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.instructions{
+	font-size:20px;
+	/*background-color: #EEEEEE;*/
+	max-width: 100%;
+	background-color: black;
+	color:white;
+	padding: 30px;
+	height: 250px;
+	text-align:left;
+}
+
+
+.instructions .container {
+    max-width: 100%;
+}
+
+.container term-display{
+	padding:20px;
+	color:inherit;
+}
