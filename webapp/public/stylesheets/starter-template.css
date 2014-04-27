@@ -26,3 +26,6 @@ body {
 	padding:20px;
 	color:inherit;
 }
+.addbutton{
+	float: right;
+}

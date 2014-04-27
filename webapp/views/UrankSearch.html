@@ -14,6 +14,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/starter-template.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-tagsinput.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -72,10 +73,33 @@
         <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <span id="terms"><h2>Select the terms</h2></span>
+            <span id="terms" ><h2>Select the terms</h2></span>
             <br>
-            <div id="meshterms">       
-               </div><!-- end of top level meshterms display -->
+            <div id="meshterms">  
+              <select id="top_level_mesh_terms">
+                <option value="NA" selected onclick="displaysubterm('NA')">Please select a Topic</option>
+              </select>
+
+              <br>
+              
+                <div class="row">
+                  <br>
+                  <input type="button" value="Add" id="addToList" class="addbutton" onclick="addToList()">
+                  <br>
+                  <select id="second_level_mesh_terms">
+                  <option value="NA" selected >Please select a subtopic</option>
+                  </select>
+                </div> <!-- end of second row -->
+           
+              <br>
+              <div class="row">
+                <div id="list">
+                  <select multiple  id="selectedchoices" >
+
+                  </select>
+                </div>
+              </div>
+            </div><!-- end of top level meshterms display -->
            
           </div> <!-- mesh terms options column end -->
         
@@ -95,7 +119,8 @@
     
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/javascipts/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap-tagsinput.min.js"></script>
     <script src="/javascripts/urank.js"></script>
   </body>
 </html>
