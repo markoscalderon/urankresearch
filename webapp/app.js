@@ -33,6 +33,7 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+
 app.get('/meshterms/toplevel',routes.meshtermtl);
 
 // example http://localhost:3000/meshterms/secondlevel?meshtermID=68016390
