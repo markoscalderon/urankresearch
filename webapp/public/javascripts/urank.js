@@ -25,82 +25,203 @@ function toggle_second_level_term_select_box()
  
   var jsonstring='[{"term":"meshterm1","id":"456845"},{"term":"meshterm2","id":"665656"},{"term":"meshterm3","id":"667656"}]'; 
   var i=0;
-  var json=$.parseJSON(jsonstring);  
-  $.each(json,function(){
 
-      $('<option  value="'+this['id']+'" onclick="displaysubterm(value)">'+this['term']+' </option>').appendTo('#top_level_mesh_terms');
+  
+
+  $.getJSON( "/meshterms/toplevel")
+    .done(function( json ) {
+       
+        $.each(json.meshterms,function(){
+
+      $('<option  value="'+this['id']+'" onclick="displaysubterm(value)">'+this['name']+' </option>').appendTo('#top_level_mesh_terms');
       });
+    
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  }); 
+
   }
 
-  function bdelete(ele)
-  {
-    var inc=ele;
-    var callingeleid=ele.id.substring(6);
-    //alert(callingeleid);
-
-    send_mesh_list.splice($.inArray(callingeleid,send_mesh_list),1);
-    alert("send list after removing "+callingeleid+" is "+send_mesh_list.toString());
-
-    //$('#list').remove('#'+)
-  }
 
   function addToList()
   {
 
 
-        
-
-
-    if(!$('#second_level_mesh_terms').disabled)
+    if(!$('#second_level_mesh_terms').is(':disabled'))
       {
-        meshid=$('#top_level_mesh_terms').val();
-        meshterm=$('#top_level_mesh_terms :selected').text();
-        alert(meshid+" "+meshterm);
+        i=1;
+        meshid=$('#second_level_mesh_terms').val();
+        meshterm=$('#second_level_mesh_terms :selected').text();
+        //alert(meshid+" "+meshterm);
         //$('#selectedchoices').append('<option value="'+meshid+'">'+meshterm+'</option>' );
         //$('#selectedchoices').tagsinput('add',meshterm);
-        $('#selectedchoices').tagsinput('add',{id:meshid, text:meshterm});
-
-        alert($('#selectedchoices').val());
-        var check;
-      
+        if(!(meshid=="NA"))
+        {
+          if(meshid=="All")
+          {
+             mainterm=$('#top_level_mesh_terms').val();
+              $.getJSON( "/meshterms/secondlevel",'meshtermID='+mainterm)
+             .done(function( json ) {
+                if(json.meshterms.length==0)
+                {
+                    return;
+                }
+                else
+                {
+                    $.each(json.meshterms,function(){
+                      $('#selectedchoices').tagsinput('add',{id:this['id'], text:this['name']});
+               
+                      }); 
+                } 
+            });//end of if condition
+        }
+          else
+            $('#selectedchoices').tagsinput('add',{id:meshid, text:meshterm});
       }
+    }                 
+      
       else
       {
-
+       
+           meshid=$('#top_level_mesh_terms').val();
+          meshterm=$('#top_level_mesh_terms :selected').text();
+        $('#selectedchoices').tagsinput('add',{id:meshid, text:meshterm});
       }
 
   }
 
   
-
-
-  
-  
-
-
 function displaysubterm (mainterm){
 
   // write an ajax function to check if a main term has subterm and then display it as a list of checkboxes
 
-  //alert(mainterm);
-  //alert(mainterm);
+
   if(mainterm=="NA")
     $('#second_level_mesh_terms').prop('disabled',true);
   else
-    $('#second_level_mesh_terms').prop('disabled',false);
+  {
 
-  $('#second_level_mesh_terms').empty().append('<option value="NA" selected >Please select a subtopic</option>');
- 
+     $.getJSON( "/meshterms/secondlevel",'meshtermID='+mainterm)
+    .done(function( json ) {
+      if(json.meshterms.length==0)
+      {
+         $('#second_level_mesh_terms').empty();
+         $('<option value="NA" selected >Please select a subtopic</option>').appendTo('#second_level_mesh_terms');
 
-
-  //make an ajax call to get back from server the subterms if it is present
-
+         $('#second_level_mesh_terms').prop('disabled',true);
+         return;
+      }
+      $('#second_level_mesh_terms').prop('disabled',false);
+      $('#second_level_mesh_terms').empty();
+       $('<option value="NA" selected >Please select a subtopic</option>').appendTo('#second_level_mesh_terms');
+       $('<option value="All" selected >Select All</option>').appendTo('#second_level_mesh_terms');
+  
+        $.each(json.meshterms,function(){
+     
+        $('<option  value="'+this['id']+'" >'+this['name']+' </option>').appendTo('#second_level_mesh_terms');
+      });
     
-  //$('#second_level_mesh_terms').prop('disabled',true);*/
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  }); 
+  }
+ 
+} // end of display subterm function
 
+//Data Visualization
+google.load("visualization", "1", {packages:["corechart","table"]});
+google.setOnLoadCallback(drawChart);
+var chart = {};
+var data = [
+    ['University', 'Ranking'],
+    ['', 0]
+  ];
 
-
-
+function generateChart(){
+  
+  var meshtermIDs = $('#selectedchoices').val().toString();
+  //"68001698,68013677";
+  $.getJSON( "/ranking",{"meshtermIDs":meshtermIDs})
+    .done(function( json ) {
+      var res = json.universities.sort(function(b,a) { return parseFloat(a.count) - parseFloat(b.count) } );
+      data = [
+        ['University', 'Ranking']
+      ];
+      counter = 0;
+      res.forEach(function(elem){
+        if(counter<10){
+          var row = [];
+          row.push(elem['university']);
+          row.push(parseInt(elem['count']));
+          data.push(row);  
+        }
+        counter+=1;
+      });
+      drawChart();
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  });
+  //console.log(data);
+  
 }
 
 
+function drawChart() {
+  dataChart = google.visualization.arrayToDataTable(data);
+  console.log(dataChart);
+  var options = {
+    title: 'Top University Chart',
+    is3D: true,
+    backgroundColor: '#EEEEEE',
+    tooltip: { text: 'percentage'}
+  };
+  chart = new google.visualization.PieChart(document.getElementById('unichart'));
+  
+  chart.draw(dataChart, options);
+  google.visualization.events.addListener(chart, 'select', selectHandler);
+}
+
+
+function selectHandler(e) {
+  var uniselection = data[chart.getSelection()[0].row+1][0];
+  var meshtermIDs = $('#selectedchoices').val().toString();
+  //"68001698,68013677";
+
+  $.getJSON( "/papers", { "meshtermIDs": meshtermIDs, "university":encodeURIComponent(uniselection) } )
+    .done(function( json ) {
+      console.log(json);
+      var rows = [];
+      for(paper in json.papers){
+        var row = [];
+        row.push(json.papers[paper].title);
+        row.push(json.papers[paper].abstract);
+        row.push(json.papers[paper].authors.toString());
+        row.push(json.papers[paper].pubmedURL);
+        rows.push(row); 
+      }
+      drawTable(rows);
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  });
+}
+
+function drawTable(rows) {
+  var datatable = new google.visualization.DataTable();
+  datatable.addColumn('string', 'Title');
+  datatable.addColumn('string', 'Abstract');
+  datatable.addColumn('string', 'Authors');
+  datatable.addColumn('string', 'PubMed Link');
+  
+  datatable.addRows(rows);
+
+  var table = new google.visualization.Table(document.getElementById('tablepapers'));
+  table.draw(datatable, {showRowNumber: true});
+}

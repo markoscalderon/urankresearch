@@ -8,12 +8,6 @@ exports.index = function(req, res){
   res.render('index')
 };
 
-/*
-app.get('/meshterms/toplevel',index.meshtermtl);
-app.get('/meshterms/secondlevel',index.meshtermsl); //receive a toplevel meshID
-app.get('/ranking',index.ranking); //receive a list of meshterms IDs
-app.get('/papers',index.papers); //receive a list of meshterms IDs and a university
-*/
 
 exports.meshtermtl = function(req, res){
   console.log("meshtermtl");
@@ -76,18 +70,7 @@ exports.meshtermsl = function(req, res){
   	}
   });
 };
-/*
-PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#>
-select ?name (COUNT(?uni) AS ?count) 
-where{
-  ?x urank:hasID ?ids .
-  ?paper urank:hasMeshID ?x .
-  ?paper urank:hasUniversityAffiliation ?uni.
-  ?uni urank:hasName ?name
-  FILTER(?ids IN ("68001698","68013677"))
-}
-group by ?name
-*/
+
 exports.ranking = function(req, res){
   console.log("ranking");
   var ids = req.query.meshtermIDs;
@@ -102,7 +85,8 @@ exports.ranking = function(req, res){
   " ?uni urank:hasName ?name " +
   " FILTER(?ids IN (" + ids + ")) " +
   " }" +
-  " group by ?name ";
+  " group by ?name " +
+  " order by ?count ";
 
   var options = {
   	url: 'http://localhost:8080/openrdf-sesame/repositories/karma_data?query=' +encodeURIComponent(query_string),
@@ -124,21 +108,6 @@ exports.ranking = function(req, res){
   	}
   });
 };
-
-/*
-PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#>
-select ?title ?abstract ?author
-where{
-  ?x urank:hasID ?ids .
-  ?paper urank:hasMeshID ?x .
-  ?paper urank:hasTitle ?title.
-  ?paper urank:hasAbstract ?abstract.
-  ?paper urank:hasAuthor ?author
-  ?paper urank:hasUniversityAffiliation ?uni.
-  ?uni urank:hasName "Polytechnic Institute of Milan"
-  FILTER(?ids IN ("68001698","68013677"))
-}
-*/
 
 exports.papers = function(req, res){
   console.log("papers");
@@ -246,7 +215,8 @@ function parsePapers(json_res, res){
   	  resp.papers[title] = {};
   	  resp.papers[title].title = title;
   	  resp.papers[title].abstract = b["abstract"].value;
-  	  resp.papers[title].authors = []; 	   
+  	  resp.papers[title].authors = [];
+      resp.papers[title].pubmedURL = "TBD"; 	   
   	}
   	resp.papers[title].authors.push(b["author"].value);
   }

@@ -25,7 +25,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -75,6 +75,7 @@
           <div class="col-lg-4">
             <span id="terms" ><h2>Select the terms</h2></span>
             <br>
+
             <div id="meshterms">  
               <select id="top_level_mesh_terms">
                 <option value="NA" selected onclick="displaysubterm('NA')">Please select a Topic</option>
@@ -84,7 +85,7 @@
               
                 <div class="row">
                   <br>
-                  <input type="button" value="Add" id="addToList" class="addbutton" onclick="addToList()">
+                  <input type="button" value="Add" id="addToList" class="btn btn-primary btn-md addbutton" role="button" onclick="addToList()">
                   <br>
                   <select id="second_level_mesh_terms">
                   <option value="NA" selected >Please select a subtopic</option>
@@ -101,26 +102,47 @@
               </div>
             </div><!-- end of top level meshterms display -->
            
+
+            <div id="meshterms">       
+            </div><!-- end of top level meshterms display -->
+            <p><a class="btn btn-primary btn-lg" role="button" href="javascript:generateChart()">Generate Chart</a></p>
+
           </div> <!-- mesh terms options column end -->
         
         <div class="col-lg-8">          
           <div id="graph_display">
           <span id="Result"><h2>Top universities</h2></span>
+          <div id="unichart" style="width: 100%; height: 400px;"></div>
+          
           </div> 
         </div> <!-- graph visualization div end -->
       </div><!-- row end -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="tablepapers" style="width: 100%; height: 500px;"></div>
+        </div><!-- end of class column of table -->
+      </div><!-- end of second row -->
       </div><!-- container end -->
     </div>
 
+    <div class="jumbotron">
+      <div class="container">
+        <!-- <p>end</p> -->
+      </div>
+    </div>
  
 
 
     <!-- Bootstrap core JavaScript ================================================== -->
     
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
+
     <script src="/javascripts/bootstrap-tagsinput.min.js"></script>
+
+
     <script src="/javascripts/urank.js"></script>
   </body>
 </html>

@@ -127,6 +127,15 @@
     
 
 
+    <!-- http://www.urank.com/ontologies/urankowl.owl#hasPubMedLink -->
+
+    <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasPubMedLink">
+        <rdfs:domain rdf:resource="http://www.urank.com/ontologies/urankowl.owl#Papers"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.urank.com/ontologies/urankowl.owl#hasPublishedDay -->
 
     <owl:DatatypeProperty rdf:about="http://www.urank.com/ontologies/urankowl.owl#hasPublishedDay">
