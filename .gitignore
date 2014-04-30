@@ -1,6 +1,10 @@
 .DS_Store
 meshterms/mesh.csv
 papers/papers.json
+papers/papers1.json
+papers/papers2.json
+papers/papers3.json
+papers/papers4.json
 universities/shanghairanking/universities.html
 universities/shanghairanking/universities.csv
 universities/shanghairanking/unis/*.html

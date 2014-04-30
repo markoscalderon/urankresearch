@@ -51,6 +51,8 @@ var data = [
   ];
 
 function generateChart(){
+  $("#mydata").tagsinput('add', { id: 1, text: 'bla' });
+  /*
   var meshtermIDs = "68001698,68013677";
 
   $.getJSON( "/ranking", { "meshtermIDs": meshtermIDs } )
@@ -74,13 +76,21 @@ function generateChart(){
     .fail(function( jqxhr, textStatus, error ) {
       var err = textStatus + ", " + error;
       console.log( "Request Failed: " + err );
-  });
+  });*/
   //console.log(data);
   
 }
 
 
 function drawChart() {
+  $('#mydata').tagsinput({
+    itemValue: function(item) {
+      return item.id;
+    },
+    itemText: function(item){
+      return item.text;
+    }
+  });
   dataChart = google.visualization.arrayToDataTable(data);
   console.log(dataChart);
   var options = {
