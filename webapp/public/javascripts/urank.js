@@ -142,18 +142,9 @@ var data = [
   ];
 
 function generateChart(){
-<<<<<<< HEAD
-  $("#mydata").tagsinput('add', { id: 1, text: 'bla' });
-  /*
-  var meshtermIDs = "68001698,68013677";
-
-  $.getJSON( "/ranking", { "meshtermIDs": meshtermIDs } )
-=======
   
   var meshtermIDs = $('#selectedchoices').val().toString();
-  //"68001698,68013677";
   $.getJSON( "/ranking",{"meshtermIDs":meshtermIDs})
->>>>>>> 9d3d261095cdfb56443039a14a649543208206bf
     .done(function( json ) {
       var res = json.universities.sort(function(b,a) { return parseFloat(a.count) - parseFloat(b.count) } );
       data = [
@@ -174,26 +165,17 @@ function generateChart(){
     .fail(function( jqxhr, textStatus, error ) {
       var err = textStatus + ", " + error;
       console.log( "Request Failed: " + err );
-  });*/
+  });
   //console.log(data);
   
 }
 
 
 function drawChart() {
-  $('#mydata').tagsinput({
-    itemValue: function(item) {
-      return item.id;
-    },
-    itemText: function(item){
-      return item.text;
-    }
-  });
   dataChart = google.visualization.arrayToDataTable(data);
   console.log(dataChart);
   var options = {
     title: 'Top University Chart',
-    is3D: true,
     backgroundColor: '#EEEEEE',
     tooltip: { text: 'percentage'}
   };
