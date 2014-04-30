@@ -1,45 +1,136 @@
 $(document).ready(function(){
   
-    createCheckbox(); //onload call the create checkboxes function which will fill the container term-display class with top level mesh terms
-    $('#subterms').toggle();
-
-
+   createCheckbox(); //onload call the create checkboxes function which will fill the container term-display class with top level mesh terms
+   $('#second_level_mesh_terms').prop('disabled',true);
+    // $('#subterms').toggle();
+    $('#selectedchoices').tagsinput({
+      itemValue: 'id',
+      itemText:'text'
+    });
+  
   });
+var send_mesh_list=new Array();
+
+  
+  
+function toggle_second_level_term_select_box()
+{
+  $('#second_level_mesh_terms').prop('disabled',true);
+}
 
  function createCheckbox() {
 
   //do an ajax call here for the mesh terms
   //get the result in json format and add mesh terms
-  var jsonstirng='[{"term":"meshterm1"},{"term":"meshterm2"},{"term":"meshterm3"}]'; // maybe we need here id too 
+ 
+  var jsonstring='[{"term":"meshterm1","id":"456845"},{"term":"meshterm2","id":"665656"},{"term":"meshterm3","id":"667656"}]'; 
   var i=0;
-  var json=$.parseJSON(jsonstirng);  
-  $.each(json,function(){
 
-    $('<input/>', {
-      id: 'myCheckbox'+i,
-      type: 'checkbox',
-      onclick: displaysubterm(this['term']),
-      value: this['term'] //change this later either to mesh id or meshterm
-    }).appendTo('#meshterms');
-    var s=this['term'];
-    $('<label/>', {
-      for: 'myCheckbox'+i,
-      text:s // this is definitely mesh term
-    }).appendTo('#meshterms');
-
-    $('<br>').appendTo('#meshterms');
-    i++;
-  });
   
-}
 
+  $.getJSON( "/meshterms/toplevel")
+    .done(function( json ) {
+       
+        $.each(json.meshterms,function(){
+
+      $('<option  value="'+this['id']+'" onclick="displaysubterm(value)">'+this['name']+' </option>').appendTo('#top_level_mesh_terms');
+      });
+    
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  }); 
+
+  }
+
+
+  function addToList()
+  {
+
+
+    if(!$('#second_level_mesh_terms').is(':disabled'))
+      {
+        i=1;
+        meshid=$('#second_level_mesh_terms').val();
+        meshterm=$('#second_level_mesh_terms :selected').text();
+        //alert(meshid+" "+meshterm);
+        //$('#selectedchoices').append('<option value="'+meshid+'">'+meshterm+'</option>' );
+        //$('#selectedchoices').tagsinput('add',meshterm);
+        if(!(meshid=="NA"))
+        {
+          if(meshid=="All")
+          {
+             mainterm=$('#top_level_mesh_terms').val();
+              $.getJSON( "/meshterms/secondlevel",'meshtermID='+mainterm)
+             .done(function( json ) {
+                if(json.meshterms.length==0)
+                {
+                    return;
+                }
+                else
+                {
+                    $.each(json.meshterms,function(){
+                      $('#selectedchoices').tagsinput('add',{id:this['id'], text:this['name']});
+               
+                      }); 
+                } 
+            });//end of if condition
+        }
+          else
+            $('#selectedchoices').tagsinput('add',{id:meshid, text:meshterm});
+      }
+    }                 
+      
+      else
+      {
+       
+           meshid=$('#top_level_mesh_terms').val();
+          meshterm=$('#top_level_mesh_terms :selected').text();
+        $('#selectedchoices').tagsinput('add',{id:meshid, text:meshterm});
+      }
+
+  }
+
+  
 function displaysubterm (mainterm){
 
   // write an ajax function to check if a main term has subterm and then display it as a list of checkboxes
 
 
+  if(mainterm=="NA")
+    $('#second_level_mesh_terms').prop('disabled',true);
+  else
+  {
 
-}
+     $.getJSON( "/meshterms/secondlevel",'meshtermID='+mainterm)
+    .done(function( json ) {
+      if(json.meshterms.length==0)
+      {
+         $('#second_level_mesh_terms').empty();
+         $('<option value="NA" selected >Please select a subtopic</option>').appendTo('#second_level_mesh_terms');
+
+         $('#second_level_mesh_terms').prop('disabled',true);
+         return;
+      }
+      $('#second_level_mesh_terms').prop('disabled',false);
+      $('#second_level_mesh_terms').empty();
+       $('<option value="NA" selected >Please select a subtopic</option>').appendTo('#second_level_mesh_terms');
+       $('<option value="All" selected >Select All</option>').appendTo('#second_level_mesh_terms');
+  
+        $.each(json.meshterms,function(){
+     
+        $('<option  value="'+this['id']+'" >'+this['name']+' </option>').appendTo('#second_level_mesh_terms');
+      });
+    
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  }); 
+  }
+ 
+} // end of display subterm function
 
 //Data Visualization
 google.load("visualization", "1", {packages:["corechart","table"]});
@@ -51,11 +142,18 @@ var data = [
   ];
 
 function generateChart(){
+<<<<<<< HEAD
   $("#mydata").tagsinput('add', { id: 1, text: 'bla' });
   /*
   var meshtermIDs = "68001698,68013677";
 
   $.getJSON( "/ranking", { "meshtermIDs": meshtermIDs } )
+=======
+  
+  var meshtermIDs = $('#selectedchoices').val().toString();
+  //"68001698,68013677";
+  $.getJSON( "/ranking",{"meshtermIDs":meshtermIDs})
+>>>>>>> 9d3d261095cdfb56443039a14a649543208206bf
     .done(function( json ) {
       var res = json.universities.sort(function(b,a) { return parseFloat(a.count) - parseFloat(b.count) } );
       data = [
@@ -108,7 +206,8 @@ function drawChart() {
 
 function selectHandler(e) {
   var uniselection = data[chart.getSelection()[0].row+1][0];
-  var meshtermIDs = "68001698,68013677";
+  var meshtermIDs = $('#selectedchoices').val().toString();
+  //"68001698,68013677";
 
   $.getJSON( "/papers", { "meshtermIDs": meshtermIDs, "university":encodeURIComponent(uniselection) } )
     .done(function( json ) {
