@@ -144,7 +144,6 @@ var data = [
 function generateChart(){
   
   var meshtermIDs = $('#selectedchoices').val().toString();
-  //"68001698,68013677";
   $.getJSON( "/ranking",{"meshtermIDs":meshtermIDs})
     .done(function( json ) {
       var res = json.universities.sort(function(b,a) { return parseFloat(a.count) - parseFloat(b.count) } );
@@ -177,7 +176,6 @@ function drawChart() {
   console.log(dataChart);
   var options = {
     title: 'Top University Chart',
-    is3D: true,
     backgroundColor: '#EEEEEE',
     tooltip: { text: 'percentage'}
   };
