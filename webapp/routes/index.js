@@ -115,7 +115,7 @@ exports.papers = function(req, res){
   var ids = '"' + ids.replace(/,/g,'","') + '"';
 
   var query_string = "PREFIX urank: <http://www.urank.com/ontologies/urankowl.owl#> " +
-  "select ?title ?abstract ?author " +
+  "select ?title ?abstract ?author ?pubmed " +
   "WHERE { " +
   "	?x urank:hasID ?ids . " +
   "	?paper urank:hasMeshID ?x . " +
@@ -123,6 +123,7 @@ exports.papers = function(req, res){
   " ?paper urank:hasAbstract ?abstract. " +
   " ?paper urank:hasAuthor ?author. " +
   "	?paper urank:hasUniversityAffiliation ?uni. " +
+  " ?paper urank:hasPubMedLink ?pubmed. " +
   " ?uni urank:hasName '" + decodeURIComponent(req.query.university) + "' ." +
   " FILTER(?ids IN (" + ids + ")) " +
   " }";
@@ -216,7 +217,7 @@ function parsePapers(json_res, res){
   	  resp.papers[title].title = title;
   	  resp.papers[title].abstract = b["abstract"].value;
   	  resp.papers[title].authors = [];
-      resp.papers[title].pubmedURL = "TBD"; 	   
+      resp.papers[title].pubmedURL = b["pubmed"].value; 	   
   	}
   	resp.papers[title].authors.push(b["author"].value);
   }
